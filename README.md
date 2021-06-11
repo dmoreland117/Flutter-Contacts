@@ -11,6 +11,7 @@ this is also my first sort of working flutter projects
 * and a bunck of other stuff
 
 ## Run
+(ONLY WORKS ON ANDROID)
 to run you need to enable permissions in settings i dont have a way to ask for them yet and run pub get
 
 ## Screenshots:
