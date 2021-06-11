@@ -168,16 +168,15 @@ class ShortcutButtons extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Responsive.ismobil(context)
-                  ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleIconButton(
-                        color: Theme.of(context).accentColor,
-                        icon: Icons.phone_outlined,
-                        outlined: true,
-                      ),
-                    )
-                  : SizedBox.shrink(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CircleIconButton(
+                  disabled: Responsive.istablet(context),
+                  icon: Icons.phone_outlined,
+                  color: Theme.of(context).accentColor,
+                  outlined: true,
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CircleIconButton(
@@ -189,6 +188,7 @@ class ShortcutButtons extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CircleIconButton(
+                  ontap: () {},
                   color: Theme.of(context).accentColor,
                   icon: Icons.video_call_outlined,
                   outlined: true,
@@ -210,7 +210,6 @@ class ShortcutButtons extends StatelessWidget {
                   },
                   color: Colors.red,
                   icon: Icons.delete_outline,
-                  outlined: false,
                 ),
               ),
             ],
