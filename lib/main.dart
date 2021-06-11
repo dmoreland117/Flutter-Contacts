@@ -2,7 +2,7 @@ import 'import.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
+      //themeMode: ThemeMode.dark,
       theme: ThemeData(
           brightness: Brightness.light,
           primaryColor: Colors.white,
