@@ -15,10 +15,10 @@ to run you need to enable permissions in settings i dont have a way to ask for t
 
 ## Screenshots:
 
-![add contacts page tablet dark mode](lib\screenshots\Screenshot_1623426030.png)
-![add contacts page tablet light mode](lib\screenshots\Screenshot_1623425981.png)
-![main screen tablet dark mode](lib\screenshots\Screenshot_1623426024.png)
+![add contacts page tablet dark mode](https://github.com/dmoreland117/Flutter-Contacts/blob/main/lib/screenshots/Screenshot_1623426030.png?raw=true)
+![add contacts page tablet light mode](https://github.com/dmoreland117/Flutter-Contacts/blob/main/lib/screenshots/Screenshot_1623425981.png?raw=true)
+![main screen tablet dark mode](https://github.com/dmoreland117/Flutter-Contacts/blob/main/lib/screenshots/Screenshot_1623426024.png?raw=true)
 ![main screen tablet light mode](lib\screenshots\Screenshot_1623425972.png)
-![mobile main screen dark](lib\screenshots\Screenshot_1623426235.png)
-![mobile add contact screen light](lib\screenshots\Screenshot_1623426241.png)
-![mobile contact screen dark](lib\screenshots\Screenshot_1623426253.png)
+![mobile main screen dark](https://github.com/dmoreland117/Flutter-Contacts/blob/main/lib/screenshots/Screenshot_1623426235.png?raw=true)
+![mobile add contact screen dark](https://github.com/dmoreland117/Flutter-Contacts/blob/main/lib/screenshots/Screenshot_1623426241.png?raw=true)
+![mobile contact screen dark](https://github.com/dmoreland117/Flutter-Contacts/blob/main/lib/screenshots/Screenshot_1623426253.png?raw=true)
