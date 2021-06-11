@@ -192,16 +192,19 @@ class AddContactsAppbar extends StatelessWidget {
           ? IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
+                // navigates back to contacts screen
                 onbacktapped();
               },
             )
           : null,
       actions: [
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              print('Not Finished yet');
+            },
             child: Text(
               'Save',
-              style: TextStyle(color: Theme.of(context).accentColor),
+              style: TextStyle(color: Colors.grey),
             ))
       ],
     );
