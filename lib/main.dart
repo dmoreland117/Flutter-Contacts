@@ -1,6 +1,7 @@
 import 'import.dart';
 
 void main() => runApp(MaterialApp(
+      title: 'Flutter Contacts',
       debugShowCheckedModeBanner: false,
       //themeMode: ThemeMode.dark,
       theme: ThemeData(
