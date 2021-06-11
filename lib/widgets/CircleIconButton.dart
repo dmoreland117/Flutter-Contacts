@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 
 /// a circular button with an icon.
 ///
-/// [icon] the icon to putt in the button.
-/// [radious] how big the button should be.
-/// [color] what color the button should be, if left null it will be the accent color of the theme.
-/// [outlined] if true buttons [color] wont be filled.
-/// [iconsize] if null size is 25.0
-///
 /// Example
 /// ```dart
 /// CircleIconButton(
@@ -30,18 +24,35 @@ import 'package:flutter/material.dart';
 ///  )
 /// ```
 class CircleIconButton extends StatelessWidget {
+  /// [Icondata] to display in the middle of button.
   final IconData icon;
+
+  /// what color the icon should be default is primary color of theme
+  final Color iconcolor;
+
+  /// How big the button should be if null it = 50.0.
   final double radious;
+
+  /// if true then there is a transeparent background with a border
   final bool outlined;
   final Function ontap;
+
+  /// defaults to accent color of theme
   final Color color;
+
+  /// defaults to 25.0
   final double iconsize;
+
+  /// if true then nothing happens when tapped on
   final bool disabled;
+
+  /// Changes the color when dissabled.
   final Color disablecolor;
 
   const CircleIconButton(
       {Key key,
       @required this.icon,
+      this.iconcolor,
       this.radious = 50.0,
       this.ontap,
       this.color,
@@ -53,30 +64,74 @@ class CircleIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: disabled == false ? ontap : null,
-        child: Container(
-            width: radious,
-            height: radious,
-            //color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Icon(
-                icon,
-                color:
-                    outlined == false ? Theme.of(context).primaryColor : color,
-                size: iconsize,
+    if (outlined) {
+      return InkWell(
+          onTap: disabled == false ? ontap : null,
+          child: Container(
+              width: radious,
+              height: radious,
+              //color: Theme.of(context).primaryColor,
+              child: Center(
+                child: Icon(
+                  icon,
+                  color: iconcolor != null
+                      ? disabled
+                          ? disablecolor != null
+                              ? disablecolor
+                              : Colors.grey
+                          : iconcolor
+                      : color != null
+                          ? disabled
+                              ? disablecolor == null
+                                  ? Colors.grey
+                                  : disablecolor
+                              : color
+                          : disabled
+                              ? Colors.grey
+                              : Theme.of(context).accentColor,
+                  size: iconsize,
+                ),
               ),
-            ),
-            decoration: outlined == false
-                ? BoxDecoration(
-                    color:
-                        color != null ? color : Theme.of(context).accentColor,
-                    shape: BoxShape.circle)
-                : BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                        color: color != null
-                            ? color
-                            : Theme.of(context).accentColor))));
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: color != null
+                          ? disabled
+                              ? disablecolor != null
+                                  ? disablecolor
+                                  : Colors.grey
+                              : color
+                          : disabled
+                              ? disablecolor != null
+                                  ? disablecolor
+                                  : Colors.grey
+                              : Theme.of(context).accentColor))));
+    } else {
+      return InkWell(
+          splashColor: Colors.red,
+          onTap: disabled ? null : ontap,
+          child: Container(
+              width: radious,
+              height: radious,
+              //color: Theme.of(context).primaryColor,
+              child: Center(
+                child: Icon(
+                  icon,
+                  color: iconcolor != null
+                      ? iconcolor
+                      : Theme.of(context).primaryColor,
+                  size: iconsize,
+                ),
+              ),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: disabled
+                      ? disablecolor != null
+                          ? disablecolor
+                          : Colors.grey
+                      : color != null
+                          ? color
+                          : Theme.of(context).accentColor)));
+    }
   }
 }
