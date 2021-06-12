@@ -1,7 +1,7 @@
 # Flutter Contacts App
 
 A verry simple contacts app with a mobile and tablet version with dark and light mode.
-this is also my first sort of working flutter projects
+this is also my first sort of working flutter projects. im also still learning how github works
 
 ## TODOS:
 * finish the add contacts page
@@ -12,7 +12,10 @@ this is also my first sort of working flutter projects
 
 ## Run
 (ONLY WORKS ON ANDROID)
-to run you need to enable permissions in settings i dont have a way to ask for them yet and run pub get
+to run you need to enable permissions in settings>apps>flutter contacts> permissions. i dont have a way to ask for them yet and run pub get
+
+## issues or sugestions
+email me at : dmoreland117@gmail.com
 
 ## Screenshots:
 
