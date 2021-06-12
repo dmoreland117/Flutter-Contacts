@@ -12,6 +12,19 @@ class AddContactPage extends StatefulWidget {
 // TODO: add phone numberfields
 // TODO: add the rest lol
 class _AddContactPageState extends State<AddContactPage> {
+  TextEditingController firstname = TextEditingController();
+  TextEditingController lastname = TextEditingController();
+  TextEditingController phonenum1;
+  TextEditingController phonenum2;
+  //TextEditingController phonename1;
+  //TextEditingController phonename2;
+
+  void addcontact(String givenname, String familyname) {
+    Contact cntact = Contact(givenName: givenname, familyName: familyname);
+    ContactsService.addContact(cntact);
+    widget.onbacktapped();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +32,10 @@ class _AddContactPageState extends State<AddContactPage> {
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         slivers: [
           AddContactsAppbar(
+            onsavetapped: () {
+              print(firstname.text);
+              addcontact(firstname.text, lastname.text);
+            },
             onbacktapped: widget.onbacktapped,
           ),
           SliverToBoxAdapter(
@@ -30,6 +47,7 @@ class _AddContactPageState extends State<AddContactPage> {
                   SizedBox(
                     height: 30.0,
                   ),
+                  // circle icon thing at top of screen
                   CircleIconButton(
                     icon: Icons.person_outline,
                     radious: 100.0,
@@ -40,6 +58,7 @@ class _AddContactPageState extends State<AddContactPage> {
                   SizedBox(
                     height: 10.0,
                   ),
+                  // add image button
                   RoundedIconButton(
                     width: 120.0,
                     hight: 35.0,
@@ -51,27 +70,89 @@ class _AddContactPageState extends State<AddContactPage> {
                   SizedBox(
                     height: 30.0,
                   ),
-                  NameSection(),
-                  SizedBox(
-                    height: 20,
+                  // first/lastname textfields
+                  Container(
+                    height: 40.0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: TextField(
+                          controller: firstname,
+                          decoration: InputDecoration(
+                              labelText: 'First Name',
+                              border: OutlineInputBorder()),
+                        )),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Expanded(
+                            child: TextField(
+                          controller: lastname,
+                          decoration: InputDecoration(
+                              labelText: 'Last Name',
+                              border: OutlineInputBorder()),
+                        )),
+                      ],
+                    ),
                   ),
-                  Divider(),
-                  SizedBox(
-                    height: 20,
+                  Divider(
+                    height: 30.0,
                   ),
-                  PhoneRow(),
+                  // phone 1
+                  Container(
+                    height: 40.0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                            flex: 2,
+                            child: TextField(
+                              controller: phonenum1,
+                              decoration: InputDecoration(
+                                  icon: Icon(Icons.phone_outlined),
+                                  labelText: 'Phone Number 1',
+                                  border: OutlineInputBorder()),
+                            )),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        // Expanded(
+                        //     child: TextField(
+                        //   controller: phonename1,
+                        //   decoration: InputDecoration(
+                        //       labelText: 'Name', border: OutlineInputBorder()),
+                        // )),
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  PhoneRow(),
-                  SizedBox(
-                    height: 20,
+                  // phone 2
+                  Container(
+                    height: 40.0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                            flex: 2,
+                            child: TextField(
+                              controller: phonenum2,
+                              decoration: InputDecoration(
+                                  icon: Icon(Icons.phone_outlined),
+                                  labelText: 'Phone Number 1',
+                                  border: OutlineInputBorder()),
+                            )),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        // Expanded(
+                        //     child: TextField(
+                        //   controller: phonename2,
+                        //   decoration: InputDecoration(
+                        //       labelText: 'Name', border: OutlineInputBorder()),
+                        // )),
+                      ],
+                    ),
                   ),
-                  Divider(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  EmailRow(),
                 ],
               ),
             ),
@@ -82,104 +163,12 @@ class _AddContactPageState extends State<AddContactPage> {
   }
 }
 
-class EmailRow extends StatelessWidget {
-  const EmailRow({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40.0,
-      child: Row(
-        children: [
-          Expanded(
-              flex: 2,
-              child: TextField(
-                decoration: InputDecoration(
-                    labelText: 'Email', border: OutlineInputBorder()),
-              )),
-          SizedBox(
-            width: 10.0,
-          ),
-          Expanded(
-              child: TextField(
-            decoration: InputDecoration(
-                labelText: 'Email Name', border: OutlineInputBorder()),
-          )),
-        ],
-      ),
-    );
-  }
-}
-
-class PhoneRow extends StatelessWidget {
-  const PhoneRow({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40.0,
-      child: Row(
-        children: [
-          Expanded(
-              flex: 2,
-              child: TextField(
-                decoration: InputDecoration(
-                    icon: Icon(Icons.phone_outlined),
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder()),
-              )),
-          SizedBox(
-            width: 10.0,
-          ),
-          Expanded(
-              child: TextField(
-            decoration: InputDecoration(
-                labelText: 'Phone Name', border: OutlineInputBorder()),
-          )),
-        ],
-      ),
-    );
-  }
-}
-
-class NameSection extends StatelessWidget {
-  const NameSection({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40.0,
-      child: Row(
-        children: [
-          Expanded(
-              child: TextField(
-            decoration: InputDecoration(
-                labelText: 'First Name', border: OutlineInputBorder()),
-          )),
-          SizedBox(
-            width: 10.0,
-          ),
-          Expanded(
-              child: TextField(
-            decoration: InputDecoration(
-                labelText: 'Last Name', border: OutlineInputBorder()),
-          )),
-        ],
-      ),
-    );
-  }
-}
-
 class AddContactsAppbar extends StatelessWidget {
   final Function onbacktapped;
+  final Function onsavetapped;
 
-  const AddContactsAppbar({Key key, this.onbacktapped}) : super(key: key);
+  const AddContactsAppbar({Key key, this.onsavetapped, this.onbacktapped})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -199,9 +188,7 @@ class AddContactsAppbar extends StatelessWidget {
           : null,
       actions: [
         TextButton(
-            onPressed: () {
-              print('Not Finished yet');
-            },
+            onPressed: onsavetapped,
             child: Text(
               'Save',
               style: TextStyle(color: Colors.grey),

@@ -44,7 +44,6 @@ class _MainScreenState extends State<MainScreen> {
     print('Deleteed: ${contact.displayName}');
     if (Responsive.ismobil(context)) {
       Navigator.pop(context);
-      getallcontacts();
     } else {
       getallcontacts();
     }
@@ -133,6 +132,7 @@ class _MainScreenState extends State<MainScreen> {
                     addcontacttapped: () {
                       navigate(AddContactPage(
                         onbacktapped: () {
+                          getallcontacts();
                           navigate(ContactInfoPage(
                             contactinfo: currentlyselectedcontact,
                           ));
